@@ -51,5 +51,5 @@ module tb;
             cnt_if0.down <= down;
 
         end
-    endinterface
+        endmodule
 
