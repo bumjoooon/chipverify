@@ -51,5 +51,6 @@ module tb;
             cnt_if0.down <= down;
 
         end
-        endmodule
+    end        
+endmodule
 
