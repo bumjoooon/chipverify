@@ -1,29 +1,21 @@
 module counter_ud
     #(parameter WIDTH = 4)
-    (
-     input clk,
-     input rstn,
-     input wire [WIDTH-1:0] load,
-    input load_en
-     input down,
-     output rollover,
-     output reg [WIDTH-1:0] count
-    );
+    (cnt_if _if);
 
-    always@(posedge clk or negedge rstn) begin
-        if (!rstn) 
-            count <= 0;
+    always@(posedge _if.clk or negedge _if.rstn) begin
+        if (!_if.rstn) 
+            _if.count <= 0;
         else begin
-            if(load_en)
-                count <= load;
+            if(_if.load_en)
+                _if.count <= _if.load;
             else begin
-                if(down)
-                    count <= count - 1;
+                if(_if.down)
+                    _if.count <= _if.count - 1;
                 else
-                    count <= count + 1;
+                    _if.count <= _if.count + 1;
             end
         end
     end
 
-        assign rollover =&count;
+        assign _if.rollover = &_if.count;
         endmodule
