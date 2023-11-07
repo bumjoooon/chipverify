@@ -34,7 +34,22 @@ module tb;
         cnt_if0.rstn <= 0;
         cnt_if0.load_en <= 0;
         cnt_if0.load <= 0;
-        cnt_if0.count <= 0;
         cnt_if0.down <= 0;
-        cnt_if0.rollover <= 0;
-        
+       
+        repeat (5) @(posedge clk);
+        cnt_if0.rstn <= 1;
+
+        for (int i =0; i < 5; i++) begin
+
+            int delay = $urandom_range (1,30);
+            #(delay);
+
+            std::randomize(load, load_en, down);
+
+            cnt_if0.load_en <= load_en;
+            cnt_if0.load <= load;
+            cnt_if0.down <= down;
+
+        end
+    endinterface
+
