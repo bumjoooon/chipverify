@@ -27,7 +27,7 @@ module tb;
         bit [3:0] load;
 
         $monitor("[%0t] down=%0b, load_en=%0b, load=0x%0h, count=0x0%h rollover=%0b",
-        $time, cnt_if0,down, cnt_if0.load_en, cnt_if0.load, cnt_if0.count, cnt_if0.rollover);
+        $time, cnt_if0.down, cnt_if0.load_en, cnt_if0.load, cnt_if0.count, cnt_if0.rollover);
 
         //initial value
         clk <= 0;
@@ -51,6 +51,10 @@ module tb;
             cnt_if0.down <= down;
 
         end
-    end        
+
+    repeat(5) @(posedge clk);
+    $finish;
+    end
+    
 endmodule
 
