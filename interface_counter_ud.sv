@@ -4,6 +4,7 @@ module counter_ud
      input clk,
      input rstn,
      input wire [WIDTH-1:0] load,
+    input load_en
      input down,
      output rollover,
      output reg [WIDTH-1:0] count
