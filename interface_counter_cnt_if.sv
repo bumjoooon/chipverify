@@ -14,13 +14,7 @@ module tb;
     
     cnt_if cnt_if0(clk);
 
-    counter_ud co( .clk (cnt_if0.clk),
-                    .rstn (cnt_if0.rstn),
-                    .load_en (cnt_if0.load_en),
-                    .load (cnt_if0.load),
-                    .count (cnt_if0.count),
-                    .down (cnt_if0.down),
-                    .rollover (cnt_if0.rollover));
+    counter_ud co(cnt_if0);
 
     initial begin
         bit load_en, down;
